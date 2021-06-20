@@ -1,0 +1,14 @@
+{
+  "name": "nodeclustering",
+  "version": "1.0.0",
+  "description": "script forcluster module, workers and load balancer in general",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Johan Hiuguita\u001b[D\u001b[D\u001b[D\u001b[D\u001b[\u001b[\u001b[C\u001b[C\u001b[C\u001b[Cguita",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
