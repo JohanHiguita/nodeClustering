@@ -1,4 +1,6 @@
-/* Important!
+/* 
+ * Server with clustering
+ * Important!
  * Execute this in a Linux environment (WSL)
  * loadtest -n 10 --rps 10 http://localhost:3000/?number=40    
 */
@@ -7,6 +9,7 @@ const express = require("express");
 const cluster = require("cluster");
 const totalCPUs = require('os').cpus().length;
 
+console.log("Launched!");
 const fabObj = require("./math-logic/fibonacci-series");
 if (cluster.isMaster) {
     
@@ -14,8 +17,11 @@ if (cluster.isMaster) {
 
     for (let i = 0; i < totalCPUs; i++) {
         cluster.fork();
+        console.log(`iteration ${i}`);
     }
+    //After forking a new worker, the worker should respond with an online message: 
     cluster.on("online", worker => {
+        // the worker responded after it was forked
         console.log(`Worker Id is ${worker.id} and PID is ${worker.process.pid}`);
     });
     cluster.on("exit", worker => {
